@@ -1,0 +1,53 @@
+main{
+    text-align: center;
+} 
+
+.book-refNo{
+    margin-top: 3rem;
+}
+
+.book-title{
+    font-size: 1.5rem;
+}
+
+.book-image img{
+    max-width: 90%;
+    max-height: 90%;
+    height: 18rem;
+    width: 18rem;
+    border: 2px solid black;
+}
+
+.book-author{
+    font-style: oblique;
+    font-size: 1.3rem;
+}
+
+.book-description{
+    font-size: 1.1rem;
+    line-height: 1.1rem;
+    max-width: 40rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.book-noOfBooks
+{
+    font-size: 1.3rem;
+    margin-top: 3rem;
+}
+
+.book-available
+{
+    font-size: 1.3rem;
+    margin-top: 1rem;
+}
+
+.addButton
+{
+    margin-bottom: 4rem;
+    margin-top: 2rem;
+}
+
+
+

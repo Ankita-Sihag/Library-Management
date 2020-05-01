@@ -1,0 +1,15 @@
+.main-heading
+{
+    font-size: 6rem;
+    font-family: 'Slabo 27px', serif, Tahoma;
+    margin-top: 2rem;
+}
+
+.icon-div .icon-pic
+{
+    width: 12rem;
+    height: 12rem;
+    border-radius: 100%;
+    border: 2px solid black;
+    margin: 2rem;
+}

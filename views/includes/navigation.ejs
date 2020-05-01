@@ -1,0 +1,128 @@
+<div class="backdrop"></div>
+    <header class="main-header">
+         
+            <nav class="main-nav">
+                <ul class="main-header-list">
+                    <li class="icon-li">
+                        <img class="icon" src="/Icon.jpg">
+                    </li>
+                    <li class="main-header-item">
+                        <a href="/" class="<%= path === '/' ? 'active' : '' %>"> Home </a>
+                    </li>
+                    <% if(!isAuthenticated || (isAuthenticated && !isAdmin)){ %>
+                        <li class="main-header-item">
+                            <a href="/books" class="<%= path === '/books' ? 'active' : '' %>"> Books </a>
+                        </li>
+                    <% } %>
+                    <% if(isAuthenticated){ %>
+                        <% if(!isAdmin) { %>
+                            <li class="main-header-item">
+                                <a href="/wishlist" class="<%= path === '/wishlist' ? 'active' : '' %>" > Wishlist </a>
+                            </li>
+                            <li class="main-header-item">
+                                <a href="/user-record" class="<%= path === '/user-record' ? 'active' : '' %>"> User-Record </a>
+                            </li>
+                        <% } else { %>
+                            <li class="main-header-item">
+                                <a href="/admin/add-book" class="<%= path === '/admin/add-book' ? 'active' : '' %>"> Add Book </a>
+                            </li>
+                            <li class="main-header-item">
+                                <a href="/admin/books" class="<%= path === '/admin/books' ? 'active' : '' %>"> Admin Books </a>
+                            </li>
+                            <li class="main-header-item">
+                                <a href="/admin/counter" class="<%= path === '/admin/counter' ? 'active' : '' %>"> Counter</a>
+                            </li>
+                            <li class="main-header-item">
+                                <a href="/admin/issue-book" class="<%= path === '/admin/issue-book' ? 'active' : '' %>"> Issued Books </a>
+                            </li>
+                        <% } %>
+
+                    <% } %>
+                </ul>
+                <ul class="main-header-list">
+                    <% if(!isAuthenticated){ %>
+                        <li class="main-header-item">
+                            <a href="/login" class="<%= path === '/login' ? 'active' : '' %>"> Login </a>
+                        </li>
+
+                        <li class="main-header-item">
+                            <a href="/signup" class="<%= path === '/signup' ? 'active' : '' %>"> Sign Up</a>
+                        </li>
+                    <% } else{ %> 
+
+                        <li class="main-header-item">
+                            <form action="/logout" method="POST">
+                                <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+                                <button type="submit" class="btn logout"> Logout </button>
+                            </form>
+                        </li>
+                    <% } %>
+                </ul>
+            </nav>
+
+            <!----------------------------- mobile nav ------------------------->
+            <div class="forRight">
+                <button class="menuBtn">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </button>
+            </div>
+            <nav class="mobile-nav">
+                
+                 <ul class="mobile-header-list">
+            
+                    <li class="mobile-header-item">
+                        <a href="/" class="<%= path === '/' ? 'active' : '' %>"> Home </a>
+                    </li>
+                    <% if(!isAuthenticated || (isAuthenticated && !isAdmin)){ %>
+                        <li class="mobile-header-item">
+                            <a href="/books" class="<%= path === '/books' ? 'active' : '' %>"> Books </a>
+                        </li>
+                    <% } %>
+                    <% if(isAuthenticated){ %>
+                        <% if(!isAdmin) { %>
+                            <li class="mobile-header-item">
+                                <a href="/wishlist" class="<%= path === '/wishlist' ? 'active' : '' %>" > Wishlist </a>
+                            </li>
+                            <li class="mobile-header-item">
+                                <a href="/user-record" class="<%= path === '/user-record' ? 'active' : '' %>"> User-Record </a>
+                            </li>
+                        <% } else { %>
+                            <li class="mobile-header-item">
+                                <a href="/admin/add-book" class="<%= path === '/admin/add-book' ? 'active' : '' %>"> Add Book </a>
+                            </li>
+                            <li class="mobile-header-item">
+                                <a href="/admin/books" class="<%= path === '/admin/books' ? 'active' : '' %>"> Admin Books </a>
+                            </li>
+                            <li class="mobile-header-item">
+                                <a href="/admin/counter" class="<%= path === '/admin/counter' ? 'active' : '' %>"> Counter</a>
+                            </li>
+                            <li class="mobile-header-item">
+                                <a href="/admin/issue-book" class="<%= path === '/admin/issue-book' ? 'active' : '' %>"> Issued Books </a>
+                            </li>
+                        <% } %>
+
+                    <% } %>
+                </ul>
+                <ul class="mobile-header-list">
+                    <% if(!isAuthenticated){ %>
+                        <li class="mobile-header-item">
+                            <a href="/login" class="<%= path === '/login' ? 'active' : '' %>"> Login </a>
+                        </li>
+
+                        <li class="mobile-header-item">
+                            <a href="/signup" class="<%= path === '/signup' ? 'active' : '' %>"> Sign Up</a>
+                        </li>
+                    <% } else{ %> 
+
+                        <li class="mobile-header-item">
+                            <form action="/logout" method="POST">
+                                <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+                                <button type="submit" class="btn logout"> Logout </button>
+                            </form>
+                        </li>
+                    <% } %>
+                </ul>
+            </nav>
+    </header>

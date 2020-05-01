@@ -1,0 +1,86 @@
+main{ 
+    
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+
+}
+
+
+hr
+{
+    width: 95vw;
+}
+form{
+    display: table;
+    
+}
+
+.form-control{
+    display: table-row;
+    text-align: center;
+    margin: 1rem;
+}
+
+.form-control label,
+.form-control input,
+.form-control textarea{
+    display: table-cell;
+    font-size: 1.3rem;
+    margin-bottom: 1rem ;
+    border-radius: 3px;
+    vertical-align: middle;
+    
+}
+
+
+.form-control input,
+.form-control textarea{
+    width: 20rem;
+    margin-left: 2rem;
+    border: 2px solid black;
+    padding: 0.2rem;
+    font-size: 1.2rem;
+}
+
+.form-control input:focus,
+.form-control textarea:focus{
+    border-color: grey;
+}
+
+
+.form-control input.invalid,
+.form-control textarea.invalid{
+    border-color: red;
+}
+
+.errorMessage
+{
+    color: red;
+    font-size: 1.6rem;
+    margin: 2rem;
+}
+
+
+/*--------------------------reset --------------------*/
+.resetInfo
+{
+    display: table-cell;
+}
+
+/*------------------------- login --------------------*/
+.resetLink
+{
+    display: table-cell;
+}
+
+.resetLink a
+{
+    color: #142850;
+    font-size: 1.1rem;
+}
+
+
+
+

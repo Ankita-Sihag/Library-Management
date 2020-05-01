@@ -1,0 +1,67 @@
+/* main
+{
+    padding: 3rem;
+
+} */
+
+header
+{
+    text-align: center;
+}
+
+hr
+{
+    
+    width: 100%;
+}
+
+/* .issuedBooks
+{
+    display: table;
+} */
+
+.container
+{
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    font-size: 1.1rem;
+}
+
+
+.details
+{
+    display: table;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.container .row
+{
+
+    display: table-row;
+}
+
+.attribute
+{
+    display: table-cell;
+    padding: 0.3rem;
+}
+
+.value
+{
+    display: table-cell;
+    padding: 0.3rem;
+}
+
+.issueId
+{
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.actions
+{
+    margin-left: 5rem;
+}
+

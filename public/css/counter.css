@@ -1,0 +1,51 @@
+
+main{
+   
+    padding: 2rem;
+    text-align: center;
+
+} 
+
+
+
+.counter-list{
+    display: table;
+    margin: auto;
+}
+
+.counter-item{
+    display: table-row;
+    justify-content: space-around;
+    font-size: 1.2rem;
+}
+
+.counter-book-details{
+    text-align: left;
+    display: table-cell;
+    padding-right: 2rem;
+}
+
+.counter-item .book-refno{
+   font-weight: bold;
+   font-size: 1.4rem;
+}
+
+.counter-item div
+{
+    margin: 0.7rem;
+}
+
+.counter-item .author{
+    
+    font-style: oblique;
+}
+
+.counter-actions{
+    padding-top: 2rem;
+    display: table-cell;
+}
+
+
+
+
+

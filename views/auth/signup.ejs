@@ -1,0 +1,63 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/signup.css">
+</head>
+<body>
+    
+    <%- include('../includes/navigation.ejs') %>
+
+    <main>
+        <header>
+            <h1> Sign up</h1>
+            <hr>
+            <hr>
+        </header>
+        <div class="errorMessage">
+            <% if(errorMessage){ %>
+               <%= errorMessage %> 
+            <% } %>
+        </div>
+        <form action="/signup" method="POST" novalidate>
+            <div class="form-control">
+                <label for="email"> Email </label>
+                <input type="email" name="email"  
+                    class="<%= validationErrors.find(e => e.param==='email') ? 'invalid': '' %>"
+                    value="<%= oldInput.email %>" >
+            </div>
+
+            <div class="form-control">
+                <label for="password"> Password </label>
+                <input type="password" name="password" 
+                    class="<%= validationErrors.find(e => e.param==='password') ? 'invalid': '' %>"
+                    value="<%= oldInput.password %>" >
+            </div>
+
+            <div class="form-control">
+                <label for="confirmPassword"> Confirm Password </label>
+                <input type="password" name="confirmPassword" 
+                    class="<%= validationErrors.find(e => e.param==='confirmPassword') ? 'invalid': '' %>"
+                    value="<%= oldInput.confirmPassword %>" >
+            </div>
+
+            <div class="form-control-radioButton">
+                <label for="isAdmin"> Admin </label>
+                <div class="forFlex">
+                    <div class="RadioInput">
+                        <input type="radio" name="isAdmin" value="true" > Yes
+                    </div>
+                    <div class="RadioInput">
+                        <input type="radio" name="isAdmin" value="false" checked> No
+                    </div>
+                </div>
+            </div>
+            
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+            <button type="submit" class="btn">
+              Sign Up
+            </button> 
+            
+        </form>
+        
+    </main>
+
+<%- include('../includes/end.ejs') %>

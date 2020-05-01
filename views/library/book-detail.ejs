@@ -1,0 +1,51 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/book-detail.css">
+
+    
+</head>
+<body>
+    
+    <%- include('../includes/navigation.ejs') %>
+
+    <main>
+        <div class="book-refNo">
+            <hr>
+            <h3> <%= book.refNo %> </h3>
+            <hr> 
+        </div>
+        <div class="book-title">
+            <h1> <%= book.title %> </h1>
+        </div>
+        <div class="book-image">
+            <img src="/<%= book.imageUrl %>" alt="Image cant be displayed">
+        </div>
+        <div class="book-author">
+            <p> By <%= book.author %></p>
+        </div>
+        <div class="book-description">
+            <p> <%= book.description %></p>
+        </div>
+        <hr>
+        <div class="book-noOfBooks">
+             No of Books :  <%= book.noOfBooks %>
+        </div>
+        <div class="book-available">
+             Available :  <%= book.available %>
+        </div>
+
+
+        <div class="addButton">
+            <% if(isAuthenticated) { %>
+                <form action="/add-to-wishlist" method="POST" onsubmit=disableButton>
+                    <input type="hidden" name="bookId" value="<%= book._id %>" >
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+                    <button  type="submit" class="btn" > Add to Wishlist </button>
+                </form>
+            <% } %>
+        </div>
+       
+    </main>
+
+
+    
+<%- include('../includes/end.ejs') %>

@@ -1,0 +1,62 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="css/user-record.css">
+    
+</head>
+<body> 
+    
+    <%- include('../includes/navigation.ejs') %>
+
+    <main>
+        <header>
+            <h1> Your Record</h1>
+            <hr>
+            <hr>
+        </header>
+        <% if(books.length > 0) { %>
+            <div class="wish-list">
+                <% for(book of books){ %>
+                    
+                    
+                    <div class="container">
+                        <div class="row">
+                            <div class="attribute bookId"> BookId : </div>
+                            <div class="value bookId"> <%= book.bookId %> </div> 
+                        </div>
+                        <div class="row">
+                            <div class="attribute"> Status : </div>
+                            <div class="value"><%= book.status %> </div>
+                        </div>
+                        <div class="row">
+                            <div class="attribute"> IssueId :</div>
+                            <div class="value"> <%= book.issueId %> </div>
+                        </div>
+                        <div class="row">
+                            <div class="attribute"> Date of Issue : </div>
+                            <div class="value"> <%= book.dateIssue %> </div>
+                        </div>
+                        <div class="row">
+                            <div class="attribute"> Date of Return : </div>
+                            <div class="value"> <%= book.dateReturn %> </div>
+                        </div>
+
+                        <% 
+                            days = (new Date() - book.dateReturn)/(1000 * 60 * 60 * 24);
+                            if(days>0){
+                                book.fine = (parseInt)(days);
+                            }
+                        %>
+
+                        <div class="row">
+                            <div class="attribute"> Fine : </div>
+                            <div class="value"> Rs. <%= book.fine %> </div>
+                        </div>
+                    </div>
+                    <hr>
+                <% } %>
+            </div>
+        <% }else{ %> 
+            <h2> No Books </h2>
+        <% } %>
+    </main>
+
+<%- include('../includes/end.ejs') %>

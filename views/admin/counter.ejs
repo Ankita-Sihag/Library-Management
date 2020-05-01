@@ -1,0 +1,47 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet"  type="text/css" href="/css/counter.css">
+</head>
+<body>
+    
+    <%- include('../includes/navigation.ejs') %>
+
+    <main>
+        <header>
+            <h1> Counter </h1>
+            <hr>
+            <hr>
+        </header>
+        <% if(books.length > 0) { %>
+            <div class="counter-list">
+                <% for(book of books){ %>
+                    <div class="counter-item">
+                        <div class="counter-book-details">
+                            
+                            <div class="book-refno"> => Ref No: <%= book.bookId.refNo %> </div>
+                            <div class="book-title"> '<%= book.bookId.title %>' 
+                                <span class="book-author"> by <%= book.bookId.author %></span>
+                            </div>
+                            <div class="book-username">
+                                UserName: <%=book.userId.email %> 
+                            </div>
+                        </div>
+                        <div class="counter-actions"> 
+                            <form action="/admin/issue-book" method="POST">
+                                <input type="hidden" name="bookId" value="<%= book.bookId._id%>">
+                                <input type="hidden" name="counterId" value="<%= book._id%>" >
+                                <input type="hidden" name="userId" value="<%= book.userId._id%>" >
+                                <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+                                <button type="submit" class="btn">Done</button>
+                            </form>
+                        </div>
+                    </div>
+                <% } %>
+            </div>
+        <% }else{ %>
+            <h2> No Books </h2>
+        <% } %>
+    </main>
+
+
+
+<%- include('../includes/end.ejs') %>

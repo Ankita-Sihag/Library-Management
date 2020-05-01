@@ -1,0 +1,71 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/forms.css">
+</head>
+<body>
+    
+    
+    <%- include('../includes/navigation.ejs') %>
+
+    <main>
+        <header>
+            <h1><% if(editing) {%>Edit book<%} else{%>Add book<%}%> </h1>
+            <hr>
+            <hr>
+        </header>
+
+        <div class="errorMessage">
+            <% if(errorMessage){ %>
+               <%= errorMessage %> 
+            <% } %>
+        </div>
+        <form enctype="multipart/form-data" action="/admin/<% if(editing) {%>edit-book<%}else{%>add-book<%}%>" method="POST">
+            <div class="form-control">
+                <label for="title"> Title </label>
+                <input type="text" name="title" value="<%= book.title %>"
+                    class="<%= validationErrors.find(e => e.param==='title') ? 'invalid' : '' %>">
+            </div>
+
+            <div class="form-control">
+                <label for="author"> Author </label>
+                <input type="text" name="author" value="<%= book.author %>"
+                    class="<%= validationErrors.find(e => e.param==='author') ? 'invalid' : '' %>">
+            </div>
+
+            <div class="form-control">
+                <label for="refNo"> RefNo </label>
+                <input type="text" name="refNo" value="<%= book.refNo %>"
+                    class="<%= validationErrors.find(e => e.param==='refNo') ? 'invalid' : '' %>">
+            </div>
+
+            <div class="form-control">
+                <label for="noOfBooks"> No of Books </label>
+                <input type="number" step=1 min=1 name="noOfBooks" value="<%= book.noOfBooks %>"
+                    class="<%= validationErrors.find(e => e.param==='noOfBooks') ? 'invalid' : '' %>">
+            </div>
+
+            <div class="form-control">
+                <label for="image"> Image Url </label>
+                <input type="file" name="image" id="image" >
+            </div>
+
+            <div class="form-control">
+                <label for="description"> Description </label>
+                <textarea name="description" rows="5"
+                    class="<%= validationErrors.find(e => e.param==='description') ? 'invalid' : '' %>">
+                        <%= book.description %>
+                </textarea>
+            </div>
+
+            <% if (editing){ %>
+                <input type="hidden" name="bookId" value="<%= book._id%>" >
+            <% } %>
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+            <button type="submit" class="btn">
+                <% if(editing) { %> Update Book 
+                <% }else{ %> Add Book <% } %>
+            </button> 
+        </form>
+        
+    </main>
+
+<%- include('../includes/end.ejs') %>

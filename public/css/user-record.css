@@ -1,0 +1,53 @@
+main
+{
+    padding: 3rem;
+}
+ 
+header
+{
+    text-align: center;
+}
+
+hr
+{
+    
+    width: 100%;
+}
+
+.wish-list
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.container
+{
+    display: table;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.container .row
+{
+
+    display: table-row;
+}
+
+.attribute
+{
+    display: table-cell;
+    padding: 0.3rem;
+}
+
+.value
+{
+    display: table-cell;
+    padding: 0.3rem;
+}
+
+.bookId
+{
+    font-weight: bold;
+    font-size: 1.3rem
+}

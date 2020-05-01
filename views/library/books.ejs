@@ -1,0 +1,67 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/books.css">
+    
+</head>
+<body>
+    
+    <%- include('../includes/navigation.ejs') %>
+
+    <main>
+        <header>
+            <h1 class="heading"> Books </h1>
+            
+            <div class="search-div">
+               <form action="/search" method="POST">
+                    <input type="text" name="search">
+                    <button type="submit"><img src="/Search.png"></button>
+               </form>
+            </div>
+            
+        </header>
+        <hr>
+        <hr class="mainhr">
+        <% if(search) { %>
+            <div class="search-results">
+                Search results for '<%= search %>'
+            </div>
+        <% } %>
+         <% if (books.length >0) { %>
+            <div class="grid">
+                <% for (book of books){ %>
+                    <article class="card">
+                        <div class="card-refNo">
+                            <h3> <%= book.refNo %></h3>
+                        </div>
+                        <hr>
+                        <header class="card-header">
+                            <h3 class="card-title"><%= book.title %></h3>
+                        </header>
+                        <div class="card-image">
+                            <img src="/<%= book.imageUrl %>" alt="Image cant be displayed">
+                        </div>
+                        <div class="card-author">
+                            <p>By <%= book.author %></p>
+                        </div>
+                        <form action="/books" method="POST">
+                            <input type="hidden" name="bookId" value="<%= book._id %>" >
+                            <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+                            <button type="submit" class="btn"> Details </button>
+                        </form>
+
+                    </article>
+                <% } %>
+            </div>
+
+            <%- include('../includes/pagination.ejs', {currentPage: currentPage,
+                hasNext: hasNext,
+                hasPrev: hasPrev,
+                nextPage: nextPage,
+                prevPage: prevPage,
+                lastPage: lastPage
+            }) %>
+
+        <% } else { %>
+            <h2> No books </h2>
+        <% } %>
+    </main>
+<%- include('../includes/end.ejs') %>

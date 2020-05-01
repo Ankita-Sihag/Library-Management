@@ -1,0 +1,73 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/issuedBooks.css">
+    
+</head>
+<body>
+    
+    <%- include('../includes/navigation.ejs') %>
+
+    <main>
+        <header>
+            <h1> Issued Books </h1>
+            <hr>
+            <hr>
+        </header>
+         <% if (books.length >0) { %>
+            <div class="issuedBooks">
+                <% for (book of books){ %>
+                    
+                    <div class="container">
+                        <div class="details">
+                            <div class="row">
+                                <div class="attribute issueId"> Issue Id : </div>
+                                <div class="value issueId"> <%= book._id %> </div>
+                            </div>
+                            <div class="row">
+                                <div class="attribute"> Book Id :</div>
+                                <div class="value"> <%= book.bookId %> </div>
+                            </div>
+                            <div class="row">
+                                <div class="attribute"> Email Id : </div>
+                                <div class="value"> <%= book.userId.email %> </div>
+                            </div>
+                            <div class="row">
+                                <div class="attribute"> Date of Issue : </div>
+                                <div class="value"><%= book.dateIssue %> </div>
+                            </div>
+                            <div class="row">
+                                <div class="attribute">Date of Return : </div>
+                                <div class="value">  <%= book.dateReturn %> </div>
+                            </div>
+
+                            <% 
+                                days = (new Date() - book.dateReturn)/(1000 * 60 * 60 * 24);
+                                if(days>0){
+                                    book.fine = (parseInt)(days);
+                                }
+                            %>
+
+                                
+                            <div class="row">
+                                <div class="attribute">Fine :  </div>
+                                <div class="value"> <%= book.fine %> </div>
+                            </div>
+                        </div>
+
+                        <div class="actions">
+                            <form method="post" action="/admin/return-book">
+                                <input type="hidden" name="issueId" value="<%= book._id%>" >
+                                <input type="hidden" name="bookId" value="<%= book.bookId%>" >
+                                <input type="hidden" name="userId" value="<%= book.userId._id %>" >
+                                <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+                                <button class="btn" type="submit"> Returned </button>
+                            </form>
+                        </div>
+                    </div>
+                    <hr>
+                <% } %>
+            </div>
+        <% } else { %>
+            <h2> No books </h2>
+        <% } %>
+    </main>
+<%- include('../includes/end.ejs') %>

@@ -1,0 +1,38 @@
+
+.form-control-radioButton{
+    display: table-row;
+    text-align: center;
+}
+
+.form-control-radioButton label
+{
+    display: table-cell;
+    font-size: 1.2rem;
+    margin-bottom: 1rem ;
+    border-radius: 3px;
+    vertical-align: middle;
+    padding-top: 1rem;
+}
+
+.forFlex
+{
+    margin-top: 1rem;
+    display: flex;
+} 
+
+.form-control-radioButton .RadioInput
+{
+    font-size: 1.2rem;
+    margin-left: 2rem;
+}
+
+.btn
+{
+    margin-top: 2rem;
+    margin-left: 2rem;
+}
+
+
+
+
+
